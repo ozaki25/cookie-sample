@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,12 @@ public class DemoFrontApiApplication {
   @Autowired
   private RestTemplateBuilder restTemplateBuilder;
 
+  @GetMapping
+  public ResponseEntity<String> hello(@CookieValue(name = "sessionId", required = false) String sessionId) {
+  return ResponseEntity.ok().body(sessionId);
+  }
+
+  
   @PostMapping
   public ResponseEntity<?> login(@RequestHeader MultiValueMap<String, String> headers, @CookieValue(name = "sessionId", required = false) String sessionId) {
     System.out.println("###################");
