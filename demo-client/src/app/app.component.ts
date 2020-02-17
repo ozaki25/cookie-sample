@@ -33,7 +33,7 @@ export class AppComponent {
 
   post() {
     return this.http
-      .post('http://localhost:8080/', null, {
+      .post('http://127.0.0.1:8080/', null, {
         ...this.httpOptions,
         observe: 'response',
         withCredentials: true,
@@ -52,7 +52,7 @@ export class AppComponent {
 
   get() {
     return this.http
-      .get('http://localhost:8080/', {
+      .get('http://127.0.0.1:8080/', {
         ...this.httpOptions,
         observe: 'response',
         withCredentials: true,
