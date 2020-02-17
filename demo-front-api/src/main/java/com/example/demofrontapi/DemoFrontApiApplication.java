@@ -24,7 +24,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin(allowCredentials = "true", origins = {"http://localhost:4200"})
 public class DemoFrontApiApplication {
   public static void main(String[] args) {
     SpringApplication.run(DemoFrontApiApplication.class, args);
@@ -48,7 +48,7 @@ public class DemoFrontApiApplication {
     RestTemplate restTemplate = restTemplateBuilder.build();
     RequestEntity<String> requestEntity = null;
     URI uri = UriComponentsBuilder
-      .fromUriString("http://localhost:8082")
+      .fromUriString("http://127.0.0.1:8082")
       .build()
       .toUri();
     requestEntity = new RequestEntity<String>(null, headers, HttpMethod.POST, uri);
