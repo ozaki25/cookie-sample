@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.HttpCookie;
 import org.springframework.http.ResponseCookie;
 
@@ -24,7 +25,7 @@ public class DemoBackApiApplication {
     SpringApplication.run(DemoBackApiApplication.class, args);
   }
 
-  @PostMapping
+  @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<Hello> login() {
     HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx").path("/").build();
     Hello hello = new Hello();
