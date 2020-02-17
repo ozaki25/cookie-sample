@@ -23,7 +23,7 @@ public class DemoBackApiApplication {
 
   @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<Hello> login() {
-    HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx").sameSite("None").secure(true).domain("localhost").path("/").build();
+    HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx")/*.sameSite("None").secure(true).domain("localhost")*/.path("/").build();
     Hello hello = new Hello();
     hello.setHello("Hello!!!!!!!!!!!!!");
     return ResponseEntity
