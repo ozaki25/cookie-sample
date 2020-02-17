@@ -25,12 +25,26 @@ public class DemoBackApiApplication {
   }
 
   @PostMapping
-  public ResponseEntity<String> login() {
+  public ResponseEntity<Hello> login() {
     HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx").path("/").build();
+    Hello hello = new Hello();
+    hello.setHello("Hello!!!!!!!!!!!!!");
     return ResponseEntity
       .ok()
       .header(HttpHeaders.SET_COOKIE, cookie.toString())
-      .body("Hello!!!!!!!!!");
+      .body(hello);
   }
 }
 
+
+class Hello {
+  private String hello;
+  
+  public void setHello(String hello) {
+    this.hello = hello;
+  }
+
+  public String getHello() {
+    return this.hello;
+  }
+}
