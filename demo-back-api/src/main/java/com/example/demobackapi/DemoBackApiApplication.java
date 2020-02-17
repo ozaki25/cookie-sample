@@ -25,25 +25,12 @@ public class DemoBackApiApplication {
   }
 
   @PostMapping
-  public ResponseEntity<Hello> login(@RequestParam MultiValueMap<String, String> params) {
-    Hello hello = new Hello();
-    hello.setHello("Hello!!!!!");
-    HttpCookie cookie = ResponseCookie.from("IwSessionId", "xxxxxxxxxxxxxxxxxxx").path("/").build();
+  public ResponseEntity<String> login() {
+    HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx").path("/").build();
     return ResponseEntity
       .ok()
       .header(HttpHeaders.SET_COOKIE, cookie.toString())
-      .body(hello);
+      .body("Hello!!!!!!!!!");
   }
 }
 
-class Hello {
-  private String hello;
-
-  public void setHello(String hello) {
-    this.hello = hello;
-  }
-
-  public String getHello() {
-    return this.hello;
-  }
-}
