@@ -3,12 +3,8 @@ package com.example.demobackapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -27,7 +23,7 @@ public class DemoBackApiApplication {
 
   @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<Hello> login() {
-    HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx").path("/").build();
+    HttpCookie cookie = ResponseCookie.from("sessionId", "xxxxxxxxxxxxxxxxxxx").sameSite("None").secure(true).domain("localhost").path("/").build();
     Hello hello = new Hello();
     hello.setHello("Hello!!!!!!!!!!!!!");
     return ResponseEntity
